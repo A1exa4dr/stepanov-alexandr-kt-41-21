@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepanovAlexandrKt-41-21", "StepanovAlexandrKt-41-21\StepanovAlexandrKt-41-21.csproj", "{6E88DEE5-A039-4010-91E7-A0610C03B3F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StepanovAlexandrKt-41-21", "StepanovAlexandrKt-41-21\StepanovAlexandrKt-41-21.csproj", "{6E88DEE5-A039-4010-91E7-A0610C03B3F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepanovAlexandrKt-41-21.Tests", "StepanovAlexandrKt-41-21.Tests\StepanovAlexandrKt-41-21.Tests.csproj", "{0DDC091B-F740-4683-886D-2ABA30C86943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6E88DEE5-A039-4010-91E7-A0610C03B3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E88DEE5-A039-4010-91E7-A0610C03B3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E88DEE5-A039-4010-91E7-A0610C03B3F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDC091B-F740-4683-886D-2ABA30C86943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDC091B-F740-4683-886D-2ABA30C86943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDC091B-F740-4683-886D-2ABA30C86943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDC091B-F740-4683-886D-2ABA30C86943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
