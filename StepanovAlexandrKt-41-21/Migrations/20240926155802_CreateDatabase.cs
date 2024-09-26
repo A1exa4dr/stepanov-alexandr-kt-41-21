@@ -24,6 +24,19 @@ namespace StepanovAlexandrKt_41_21.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "cd_subject",
+                columns: table => new
+                {
+                    subject_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор записи предмета")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    c_subject_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название предмета")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_cd_subject_subject_id", x => x.subject_id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "cd_student",
                 columns: table => new
                 {
@@ -56,6 +69,9 @@ namespace StepanovAlexandrKt_41_21.Migrations
         {
             migrationBuilder.DropTable(
                 name: "cd_student");
+
+            migrationBuilder.DropTable(
+                name: "cd_subject");
 
             migrationBuilder.DropTable(
                 name: "cd_group");

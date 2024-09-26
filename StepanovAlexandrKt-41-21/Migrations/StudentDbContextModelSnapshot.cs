@@ -88,6 +88,29 @@ namespace StepanovAlexandrKt_41_21.Migrations
                     b.ToTable("cd_student", (string)null);
                 });
 
+            modelBuilder.Entity("StepanovAlexandrKt_41_21.Models.Subject", b =>
+                {
+                    b.Property<int>("SubjectId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("subject_id")
+                        .HasComment("Идентификатор записи предмета");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubjectId"));
+
+                    b.Property<string>("SubjectName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar")
+                        .HasColumnName("c_subject_name")
+                        .HasComment("Название предмета");
+
+                    b.HasKey("SubjectId")
+                        .HasName("pk_cd_subject_subject_id");
+
+                    b.ToTable("cd_subject", (string)null);
+                });
+
             modelBuilder.Entity("StepanovAlexandrKt_41_21.Models.Student", b =>
                 {
                     b.HasOne("StepanovAlexandrKt_41_21.Models.Group", "Group")
