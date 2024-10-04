@@ -51,6 +51,12 @@ namespace StepanovAlexandrKt_41_21.Database.Configurations
                 .HasColumnType(ColumnType.Int)
                 .HasComment("Идентификатор группы");
 
+            builder.Property(p => p.IsDeleted)
+                .IsRequired()
+                .HasColumnName("b_deleted")
+                .HasColumnType(ColumnType.Bool)
+                .HasComment("Статус удаления");
+
             builder.ToTable(TableName)
                 .HasOne(p => p.Group)
                 .WithMany()
