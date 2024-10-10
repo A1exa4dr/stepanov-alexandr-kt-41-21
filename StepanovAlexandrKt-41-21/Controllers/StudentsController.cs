@@ -74,6 +74,38 @@ namespace StepanovAlexandrKt_41_21.Controllers
             return Ok(students);
         }
 
+        [HttpPost("GetStudentsByGroupId")]
+        public async Task<IActionResult> GetStudentsByGroupIdAsync(StudentGroupIdFilter filter, CancellationToken cancellationToken = default)
+        {
+            var students = await _studentService.GetStudentsByGroupIdAsync(filter, cancellationToken);
+
+            return Ok(students);
+        }
+
+        [HttpPost("GetStudentsByFIO")]
+        public async Task<IActionResult> GetStudentsByFIOAsync(StudentFIOFilter filter, CancellationToken cancellationToken = default)
+        {
+            var students = await _studentService.GetStudentsByFIOAsync(filter, cancellationToken);
+
+            return Ok(students);
+        }
+
+        [HttpPost("GetStudentsByLastName")]
+        public async Task<IActionResult> GetStudentsByLastNameAsync(StudentLastNameFilter filter, CancellationToken cancellationToken = default)
+        {
+            var students = await _studentService.GetStudentsByLastNameAsync(filter, cancellationToken);
+
+            return Ok(students);
+        }
+
+        [HttpPost("GetStudentsByName")]
+        public async Task<IActionResult> GetStudentsByNameAsync(StudentNameFilter filter, CancellationToken cancellationToken = default)
+        {
+            var students = await _studentService.GetStudentsByNameAsync(filter, cancellationToken);
+
+            return Ok(students);
+        }
+
         [HttpPost("GetStudentsIsDeleted")]
         public async Task<IActionResult> GetStudentsByExistAsync(StudentDeletedFilter filter, CancellationToken cancellationToken = default)
         {
