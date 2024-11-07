@@ -4,12 +4,12 @@ namespace StepanovAlexandrKt_41_21.Tests
     public class GroupTests
     {
         [Fact]
-        public void IsValidGroupName_KT3120_True()
+        public void IsValidGroupName_KT3121_True()
         {
             //arrange
             var testGroup = new Group
             {
-                GroupName = "KT-31-20"
+                GroupName = "KT-31-21"
             };
 
             //act

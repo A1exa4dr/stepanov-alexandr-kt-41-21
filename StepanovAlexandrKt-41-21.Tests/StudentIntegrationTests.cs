@@ -17,7 +17,7 @@ namespace StepanovAlexandrKt_41_21.Tests
         }
 
         [Fact]
-        public async Task GetStudentsByGroupAsync_KT3120_TwoObjects()
+        public async Task GetStudentsByGroupAsync_KT3121_TwoObjects()
         {
             // Arrange
             var ctx = new StudentDbContext(_dbContextOptions);
@@ -26,11 +26,73 @@ namespace StepanovAlexandrKt_41_21.Tests
             {
                 new Group
                 {
-                    GroupName = "KT-31-20"
+                    GroupName = "KT-31-21"
                 },
                 new Group
                 {
-                    GroupName = "KT-41-20"
+                    GroupName = "KT-41-21"
+                },
+                new Group
+                {
+                    GroupName = "KT-42-21"
+                }
+            };
+            await ctx.Set<Group>().AddRangeAsync(groups);
+
+            var students = new List<Student>
+            {
+                new Student
+                {
+                    FirstName = "qwerty",
+                    LastName = "asdf",
+                    MiddleName = "zxc",
+                    GroupId = 3,
+                },
+                new Student
+                {
+                    FirstName = "qwerty2",
+                    LastName = "asdf2",
+                    MiddleName = "zxc2",
+                    GroupId = 3,
+                },
+                new Student
+                {
+                     FirstName = "qwerty3",
+                    LastName = "asdf3",
+                    MiddleName = "zxc3",
+                    GroupId = 3,
+                }
+            };
+            await ctx.Set<Student>().AddRangeAsync(students);
+
+            await ctx.SaveChangesAsync();
+
+            // Act
+            var filter = new Filters.StudentFilters.StudentGroupFilter
+            {
+                GroupName = "KT-42-21"
+            };
+            var studentsResult = await studentService.GetStudentsByGroupAsync(filter, CancellationToken.None);
+
+            // Assert
+            Assert.Equal(3, studentsResult.Length);
+        }
+
+        [Fact]
+        public async Task GetStudentsByLastName()
+        {
+            // Arrange
+            var ctx = new StudentDbContext(_dbContextOptions);
+            var studentService = new StudentService(ctx);
+            /*ar groups = new List<Group>
+            {
+                new Group
+                {
+                    GroupName = "KT-31-21"
+                },
+                new Group
+                {
+                    GroupName = "KT-41-21"
                 }
             };
             await ctx.Set<Group>().AddRangeAsync(groups);
@@ -61,17 +123,134 @@ namespace StepanovAlexandrKt_41_21.Tests
             };
             await ctx.Set<Student>().AddRangeAsync(students);
 
-            await ctx.SaveChangesAsync();
+            await ctx.SaveChangesAsync();*/
 
             // Act
-            var filter = new Filters.StudentFilters.StudentGroupFilter
+            var filter = new Filters.StudentFilters.StudentLastNameFilter
             {
-                GroupName = "KT-31-20"
+                LastName = "asdf"
             };
-            var studentsResult = await studentService.GetStudentsByGroupAsync(filter, CancellationToken.None);
+            var studentsResult = await studentService.GetStudentsByLastNameAsync(filter, CancellationToken.None);
 
             // Assert
-            Assert.Equal(2, studentsResult.Length);
+            Assert.Equal(1, studentsResult.Length);
+        }
+
+        [Fact]
+        public async Task GetStudentsByFIO()
+        {
+            // Arrange
+            var ctx = new StudentDbContext(_dbContextOptions);
+            var studentService = new StudentService(ctx);
+            /*var groups = new List<Group>
+            {
+                new Group
+                {
+                    GroupName = "KT-31-21"
+                },
+                new Group
+                {
+                    GroupName = "KT-41-21"
+                }
+            };
+            await ctx.Set<Group>().AddRangeAsync(groups);
+
+            var students = new List<Student>
+            {
+                new Student
+                {
+                    FirstName = "qwerty",
+                    LastName = "asdf",
+                    MiddleName = "zxc",
+                    GroupId = 1,
+                },
+                new Student
+                {
+                    FirstName = "qwerty2",
+                    LastName = "asdf2",
+                    MiddleName = "zxc2",
+                    GroupId = 2,
+                },
+                new Student
+                {
+                    FirstName = "qwerty3",
+                    LastName = "asdf3",
+                    MiddleName = "zxc3",
+                    GroupId = 1,
+                }
+            };
+            await ctx.Set<Student>().AddRangeAsync(students);
+
+            await ctx.SaveChangesAsync();*/
+
+            // Act
+            var filter = new Filters.StudentFilters.StudentFIOFilter
+            {
+                FirstName = "qwerty3",
+                LastName = "asdf3",
+                MiddleName = "zxc3",
+            };
+            var studentsResult = await studentService.GetStudentsByFIOAsync(filter, CancellationToken.None);
+
+            // Assert
+            Assert.Equal(1, studentsResult.Length);
+        }
+        [Fact]
+        public async Task GetStudentsByGroupId()
+        {
+            // Arrange
+            var ctx = new StudentDbContext(_dbContextOptions);
+            var studentService = new StudentService(ctx);
+            /*var groups = new List<Group>
+            {
+                new Group
+                {
+                    GroupName = "KT-31-21"
+                },
+                new Group
+                {
+                    GroupName = "KT-41-21"
+                }
+            };
+            await ctx.Set<Group>().AddRangeAsync(groups);
+
+            var students = new List<Student>
+            {
+                new Student
+                {
+                    FirstName = "qwerty",
+                    LastName = "asdf",
+                    MiddleName = "zxc",
+                    GroupId = 1,
+                },
+                new Student
+                {
+                    FirstName = "qwerty2",
+                    LastName = "asdf2",
+                    MiddleName = "zxc2",
+                    GroupId = 2,
+                },
+                new Student
+                {
+                    FirstName = "qwerty3",
+                    LastName = "asdf3",
+                    MiddleName = "zxc3",
+                    GroupId = 1,
+                }
+            };
+            await ctx.Set<Student>().AddRangeAsync(students);
+
+            await ctx.SaveChangesAsync();*/
+
+            // Act
+            var filter = new Filters.StudentFilters.StudentGroupIdFilter
+            {
+                GroupId = 3,
+            };
+            var studentsResult = await studentService.GetStudentsByGroupIdAsync(filter, CancellationToken.None);
+
+            // Assert
+            Assert.Equal(3, studentsResult.Length);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace StepanovAlexandrKt_41_21.Database.Configurations
                 .HasColumnType(ColumnType.String).HasMaxLength(100)
                 .HasComment("Название группы");
 
-            builder.ToTable(TableName)
+           /* builder.ToTable(TableName)
                 .HasOne(p => p.Subject)
                 .WithMany()
                 .HasForeignKey(p => p.SubjectId)
@@ -41,13 +41,13 @@ namespace StepanovAlexandrKt_41_21.Database.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.ToTable(TableName)
-                .HasIndex(p => p.SubjectId, $"idx_{TableName}_fk_f_subject_id");
+                .HasIndex(p => p.SubjectId, $"idx_{TableName}_fk_f_subject_id");*/
 
             builder.ToTable(TableName);
 
             //Добавим явную автоподгрузку связанной сущности
-            builder.Navigation(p => p.Subject)
-                .AutoInclude();
+           /* builder.Navigation(p => p.Subject)
+                .AutoInclude();*/
         }
     }
 }
